@@ -1,23 +1,25 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+int number = 4566;
+string numberInString = number.ToString();
+char[] letters = numberInString.ToCharArray();
 
+Console.WriteLine("Wyniki dla liczby: " + number);
 
-string name = "Ewa";
-int age = 33;
-bool isWoman = true;
-
-if (isWoman == true && age < 30)
+for (int i = 0; i < 10; i++)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
+    int numberOfAppereances = 0;
+
+    foreach (char c in letters)
+    {
+        if (i.ToString() == c.ToString())
+        {
+            numberOfAppereances++;
+        }
+
+    }
+
+    Console.WriteLine(i + " => " + numberOfAppereances);
+
+
 
 }
-else if (name == "Ewa" && age == 33)
-{
-    Console.WriteLine("Ewa, lat 33");
-
-}
-else if (age < 18 && isWoman == false)
-{
-    Console.WriteLine("Niepełnoletni Mężczyzna");
-}
-
-
