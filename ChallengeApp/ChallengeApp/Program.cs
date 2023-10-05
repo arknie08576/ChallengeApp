@@ -1,34 +1,34 @@
 ﻿
 using ChallengeApp;
 
-Employee pracownik1 = new Employee("Tomasz", "Kot", 44);
-pracownik1.AddPoints(2);
-pracownik1.AddPoints(3);
-pracownik1.AddPoints(6);
-pracownik1.AddPoints(8);
-pracownik1.AddPoints(4);
-Employee pracownik2 = new Employee("Maciej", "Cichy", 24);
-pracownik2.AddPoints(5);
-pracownik2.AddPoints(5);
-pracownik2.AddPoints(7);
-pracownik2.AddPoints(3);
-pracownik2.AddPoints(2);
-Employee pracownik3 = new Employee("Paweł", "Typow", 37);
-pracownik3.AddPoints(7);
-pracownik3.AddPoints(5);
-pracownik3.AddPoints(9);
-pracownik3.AddPoints(6);
-pracownik3.AddPoints(5);
+Employee worker1 = new Employee("Tomasz", "Kot", 44);
+worker1.AddPoints(2);
+worker1.AddPoints(3);
+worker1.AddPoints(6);
+worker1.AddPoints(8);
+worker1.AddPoints(4);
+Employee worker2 = new Employee("Maciej", "Cichy", 24);
+worker2.AddPoints(5);
+worker2.AddPoints(5);
+worker2.AddPoints(7);
+worker2.AddPoints(3);
+worker2.AddPoints(2);
+Employee worker3 = new Employee("Paweł", "Typow", 37);
+worker3.AddPoints(7);
+worker3.AddPoints(5);
+worker3.AddPoints(9);
+worker3.AddPoints(6);
+worker3.AddPoints(5);
 
-if (pracownik1.Result > pracownik2.Result && pracownik1.Result > pracownik3.Result)
+if (worker1.Result > worker2.Result && worker1.Result > worker3.Result)
 {
-    pracownik1.Print();
+    worker1.Print();
 }
-else if (pracownik2.Result > pracownik3.Result)
+else if (worker2.Result > worker3.Result)
 {
-    pracownik2.Print();
+    worker2.Print();
 }
 else
 {
-    pracownik3.Print();
+    worker3.Print();
 }
