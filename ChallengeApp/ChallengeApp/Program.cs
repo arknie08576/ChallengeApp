@@ -20,11 +20,11 @@ worker3.AddPoints(9);
 worker3.AddPoints(6);
 worker3.AddPoints(5);
 
-if (worker1.Result > worker2.Result && worker1.Result > worker3.Result)
+if (worker1.GetStatistics().Average > worker2.GetStatistics().Average && worker1.GetStatistics().Average > worker3.GetStatistics().Average)
 {
     worker1.Print();
 }
-else if (worker2.Result > worker3.Result)
+else if (worker2.GetStatistics().Average > worker3.GetStatistics().Average)
 {
     worker2.Print();
 }

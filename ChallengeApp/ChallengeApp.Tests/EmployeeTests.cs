@@ -5,12 +5,10 @@ namespace ChallengeApp.Tests
 
 
         [Test]
-        public void CheckAddingPlusScores()
+        public void CheckMinScore()
         {
             //arrange
             var user = new Employee("Adam", "Taki", 45);
-
-
             //act
             user.AddPoints(9);
             user.AddPoints(10);
@@ -18,29 +16,44 @@ namespace ChallengeApp.Tests
             user.AddPoints(3);
             user.AddPoints(15);
 
-            int result = user.Result;
-
+            var result = user.GetStatistics();
             //assert
-            Assert.AreEqual(53, result);
+            Assert.AreEqual(3, result.Min);
         }
         [Test]
-        public void CheckAddingPlusAndMinusScores()
+        public void CheckMaxPlusScore()
         {
             //arrange
             var user = new Employee("Adam", "Taki", 45);
-
-
             //act
             user.AddPoints(9);
             user.AddPoints(10);
             user.AddPoints(16);
-            user.AddPoints(-3);
-            user.AddPoints(-15);
+            user.AddPoints(3);
+            user.AddPoints(15);
 
-            int result = user.Result;
-
+            var result = user.GetStatistics();
             //assert
-            Assert.AreEqual(17, result);
+            Assert.AreEqual(16, result.Max);
+        }
+        [Test]
+        public void CheckAverageScore()
+        {
+            //arrange
+            var user = new Employee("Adam", "Taki", 45);
+            //act
+            user.AddPoints(9);
+            user.AddPoints(10);
+            user.AddPoints(16);
+            user.AddPoints(3);
+            user.AddPoints(15);
+
+            var result = user.GetStatistics();
+            //assert
+            Assert.AreEqual(10.6, result.Average, 0.1);
+
+
+
         }
     }
 }
