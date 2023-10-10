@@ -95,11 +95,79 @@ namespace ChallengeApp
                 stats.Average += point;
             }
             stats.Average /= points.Count;
-
-
-
-
             return stats;
         }
+        public Statistics GetStatisticsWithForeach()
+        {
+            Statistics stats = new Statistics();
+            stats.Min = float.MaxValue;
+            stats.Max = float.MinValue;
+            stats.Average = 0;
+
+            foreach (var point in points)
+            {
+                stats.Min = Math.Min(stats.Min, point);
+                stats.Max = Math.Max(stats.Max, point);
+                stats.Average += point;
+            }
+            stats.Average /= points.Count;
+            return stats;
+        }
+        public Statistics GetStatisticsWithFor()
+        {
+            Statistics stats = new Statistics();
+            stats.Min = float.MaxValue;
+            stats.Max = float.MinValue;
+            stats.Average = 0;
+
+            for(int i =0;i<points.Count;i++)
+            {
+                stats.Min = Math.Min(stats.Min, points[i]);
+                stats.Max = Math.Max(stats.Max, points[i]);
+                stats.Average += points[i];
+            }
+            stats.Average /= points.Count;
+            return stats;
+        }
+
+        public Statistics GetStatisticsWithWhile()
+        {
+            Statistics stats = new Statistics();
+            stats.Min = float.MaxValue;
+            stats.Max = float.MinValue;
+            stats.Average = 0;
+
+            int i = 0;
+
+            while( i < points.Count)
+            {
+                stats.Min = Math.Min(stats.Min, points[i]);
+                stats.Max = Math.Max(stats.Max, points[i]);
+                stats.Average += points[i];
+                i++;
+            }
+            stats.Average /= points.Count;
+            return stats;
+        }
+        public Statistics GetStatisticsWithDoWhile()
+        {
+            Statistics stats = new Statistics();
+            stats.Min = float.MaxValue;
+            stats.Max = float.MinValue;
+            stats.Average = 0;
+
+            int i = 0;
+
+            do
+            {
+                stats.Min = Math.Min(stats.Min, points[i]);
+                stats.Max = Math.Max(stats.Max, points[i]);
+                stats.Average += points[i];
+                i++;
+            } while (i < points.Count);
+            stats.Average /= points.Count;
+            return stats;
+        }
+
     }
 }
