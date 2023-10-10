@@ -27,12 +27,58 @@ namespace ChallengeApp
         }
         public void AddPoints(float score)
         {
-            points.Add(score);
+            if (score >= 0 && score <= 100)
+            {
+                points.Add(score);
+            }
+            else
+            {
+                Console.WriteLine("Invalid score");
+            }
         }
+
+        public void AddPoints(int score)
+        {
+
+            float scoreToFloat = score;
+            AddPoints(scoreToFloat);
+
+        }
+        public void AddPoints(long score)
+        {
+
+            float scoreToFloat = score;
+            AddPoints(scoreToFloat);
+
+        }
+        public void AddPoints(double score)
+        {
+
+            float scoreToFloat = (float)score;
+            AddPoints(scoreToFloat);
+
+        }
+        public void AddPoints(string score)
+        {
+
+            float scoreToFloat = 0.0F;
+            if (float.TryParse(score, out scoreToFloat))
+            {
+
+
+                AddPoints(scoreToFloat);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+
+
         public void Print()
         {
             Console.WriteLine(Name + " " + Surname + ", wiek " + Age);
-            Console.WriteLine("Przeciętna ocena: " + this.GetStatistics().Average );
+            Console.WriteLine("Przeciętna ocena: " + this.GetStatistics().Average);
         }
 
         public Statistics GetStatistics()

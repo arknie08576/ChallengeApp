@@ -3,9 +3,9 @@ using ChallengeApp;
 
 Employee worker1 = new Employee("Tomasz", "Kot", 44);
 worker1.AddPoints(2);
-worker1.AddPoints(3);
-worker1.AddPoints(6);
-worker1.AddPoints(8);
+worker1.AddPoints(300);
+worker1.AddPoints("6");
+worker1.AddPoints("Mtt");
 worker1.AddPoints(4);
 Employee worker2 = new Employee("Maciej", "Cichy", 24);
 worker2.AddPoints(5);
