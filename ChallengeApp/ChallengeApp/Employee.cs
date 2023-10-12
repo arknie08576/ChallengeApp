@@ -33,7 +33,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Invalid score");
+                Console.WriteLine("Nieprawidłowa ocena");
             }
         }
 
@@ -70,7 +70,37 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("String is not float");
+                switch (score)
+                {
+                    case "a":
+                    case "A":
+                        AddPoints(100f);
+                        break;
+                    case "b":
+                    case "B":
+                        AddPoints(80f);
+                        break;
+                    case "c":
+                    case "C":
+                        AddPoints(60f);
+                        break;
+                    case "d":
+                    case "D":
+                        AddPoints(40f);
+                        break;
+                    case "e":
+                    case "E":
+                        AddPoints(20f);
+                        break;
+                    default:
+                        Console.WriteLine("Nieprawidłowa ocena");
+                        break;
+
+
+
+
+
+                }
             }
         }
 
@@ -78,7 +108,9 @@ namespace ChallengeApp
         public void Print()
         {
             Console.WriteLine(Name + " " + Surname + ", wiek " + Age);
-            Console.WriteLine("Przeciętna ocena: " + this.GetStatistics().Average);
+            Console.WriteLine("Min ocena: " + this.GetStatistics().Min);
+            Console.WriteLine("Max ocena: " + this.GetStatistics().Max);
+            Console.WriteLine("Przeciętna ocena: " + this.GetStatistics().Average + " czyli literowo " + this.GetStatistics().AverageLetter);
         }
 
         public Statistics GetStatistics()
@@ -95,79 +127,39 @@ namespace ChallengeApp
                 stats.Average += point;
             }
             stats.Average /= points.Count;
-            return stats;
-        }
-        public Statistics GetStatisticsWithForeach()
-        {
-            Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
 
-            foreach (var point in points)
+            switch (stats.Average)
             {
-                stats.Min = Math.Min(stats.Min, point);
-                stats.Max = Math.Max(stats.Max, point);
-                stats.Average += point;
+
+                case var average when average >= 80:
+                    stats.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    stats.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    stats.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    stats.AverageLetter = 'D';
+                    break;
+                case var average when average >= 00:
+                    stats.AverageLetter = 'E';
+                    break;
+
             }
-            stats.Average /= points.Count;
-            return stats;
-        }
-        public Statistics GetStatisticsWithFor()
-        {
-            Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
 
-            for(int i =0;i<points.Count;i++)
+            if (points.Count == 0)
             {
-                stats.Min = Math.Min(stats.Min, points[i]);
-                stats.Max = Math.Max(stats.Max, points[i]);
-                stats.Average += points[i];
+                stats.Min = 0;
+                stats.Max = 0;
+                stats.Average = 0;
+                stats.AverageLetter = 'E';
             }
-            stats.Average /= points.Count;
+
             return stats;
         }
 
-        public Statistics GetStatisticsWithWhile()
-        {
-            Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
-
-            int i = 0;
-
-            while( i < points.Count)
-            {
-                stats.Min = Math.Min(stats.Min, points[i]);
-                stats.Max = Math.Max(stats.Max, points[i]);
-                stats.Average += points[i];
-                i++;
-            }
-            stats.Average /= points.Count;
-            return stats;
-        }
-        public Statistics GetStatisticsWithDoWhile()
-        {
-            Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
-
-            int i = 0;
-
-            do
-            {
-                stats.Min = Math.Min(stats.Min, points[i]);
-                stats.Max = Math.Max(stats.Max, points[i]);
-                stats.Average += points[i];
-                i++;
-            } while (i < points.Count);
-            stats.Average /= points.Count;
-            return stats;
-        }
 
     }
 }

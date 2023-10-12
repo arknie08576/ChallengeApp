@@ -55,5 +55,38 @@ namespace ChallengeApp.Tests
 
 
         }
+
+        [Test]
+        public void CheckEmptyScore()
+        {
+            var emp = new Employee("Adam", "Taki", 33);
+
+            var result = emp.GetStatistics();
+            Assert.AreEqual(0, result.Max);
+            Assert.AreEqual(0, result.Min);
+            Assert.AreEqual(0, result.Average);
+            Assert.AreEqual('E', result.AverageLetter);
+
+
+        }
+
+        [Test]
+        public void CheckAverageLetter()
+        {
+            var emp = new Employee("Adam", "Taki", 33);
+            emp.AddPoints("A");
+            emp.AddPoints("B");
+            emp.AddPoints("C");
+            emp.AddPoints("D");
+            emp.AddPoints("E");
+
+            var result = emp.GetStatistics();
+            Assert.AreEqual('B', result.AverageLetter);
+
+
+
+
+
+        }
     }
 }

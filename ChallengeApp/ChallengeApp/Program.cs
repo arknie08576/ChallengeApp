@@ -1,34 +1,27 @@
 ﻿
 using ChallengeApp;
 
-Employee worker1 = new Employee("Tomasz", "Kot", 44);
-worker1.AddPoints(2);
-worker1.AddPoints(300);
-worker1.AddPoints("6");
-worker1.AddPoints("Mtt");
-worker1.AddPoints(4);
-Employee worker2 = new Employee("Maciej", "Cichy", 24);
-worker2.AddPoints(5);
-worker2.AddPoints(5);
-worker2.AddPoints(7);
-worker2.AddPoints(3);
-worker2.AddPoints(2);
-Employee worker3 = new Employee("Paweł", "Typow", 37);
-worker3.AddPoints(7);
-worker3.AddPoints(5);
-worker3.AddPoints(9);
-worker3.AddPoints(6);
-worker3.AddPoints(5);
+Console.WriteLine("Witaj w programie do oceny pracowników");
 
-if (worker1.GetStatistics().Average > worker2.GetStatistics().Average && worker1.GetStatistics().Average > worker3.GetStatistics().Average)
+var employee = new Employee("Jan","Taki",33);
+
+
+while (true)
 {
-    worker1.Print();
+    Console.WriteLine("Podaj kolejną ocenę pracownika w zakresie literowym a/A - f/F lub zakresie liczbowym 0 - 100");
+    Console.WriteLine("wpisz q jeśli chcesz zakończyć dodawanie ocen");
+
+    var ocena = Console.ReadLine();
+    
+    if (ocena == "q")
+    {
+
+        break;
+    }
+    
+    
+    employee.AddPoints(ocena);
+
 }
-else if (worker2.GetStatistics().Average > worker3.GetStatistics().Average)
-{
-    worker2.Print();
-}
-else
-{
-    worker3.Print();
-}
+
+employee.Print();
