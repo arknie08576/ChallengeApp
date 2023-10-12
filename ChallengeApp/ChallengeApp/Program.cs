@@ -1,9 +1,10 @@
 ﻿
 using ChallengeApp;
+using System.Xml.Linq;
 
 Console.WriteLine("Witaj w programie do oceny pracowników");
 
-var employee = new Employee("Jan","Taki",33);
+var employee = new Employee("Jan", "Taki", 33);
 
 
 while (true)
@@ -12,16 +13,26 @@ while (true)
     Console.WriteLine("wpisz q jeśli chcesz zakończyć dodawanie ocen");
 
     var ocena = Console.ReadLine();
-    
+
     if (ocena == "q")
     {
 
         break;
     }
-    
-    
-    employee.AddPoints(ocena);
 
+    try
+    {
+        employee.AddPoints(ocena);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+
+    }
 }
 
-employee.Print();
+
+Console.WriteLine(employee.Name + " " + employee.Surname + ", wiek " + employee.Age);
+Console.WriteLine("Min ocena: " + employee.GetStatistics().Min);
+Console.WriteLine("Max ocena: " + employee.GetStatistics().Max);
+Console.WriteLine("Przeciętna ocena: " + employee.GetStatistics().Average + " czyli literowo " + employee.GetStatistics().AverageLetter);

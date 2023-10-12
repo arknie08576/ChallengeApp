@@ -12,7 +12,7 @@ namespace ChallengeApp
     {
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        int Age { get; set; }
+        public int Age { get; set; }
 
         private List<float> points;
 
@@ -33,7 +33,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("Nieprawidłowa ocena");
+                throw new Exception("Nieprawidłowa ocena");
             }
         }
 
@@ -93,8 +93,8 @@ namespace ChallengeApp
                         AddPoints(20f);
                         break;
                     default:
-                        Console.WriteLine("Nieprawidłowa ocena");
-                        break;
+                        throw new Exception ("Nieprawidłowa ocena");
+                        
 
 
 
@@ -105,13 +105,7 @@ namespace ChallengeApp
         }
 
 
-        public void Print()
-        {
-            Console.WriteLine(Name + " " + Surname + ", wiek " + Age);
-            Console.WriteLine("Min ocena: " + this.GetStatistics().Min);
-            Console.WriteLine("Max ocena: " + this.GetStatistics().Max);
-            Console.WriteLine("Przeciętna ocena: " + this.GetStatistics().Average + " czyli literowo " + this.GetStatistics().AverageLetter);
-        }
+
 
         public Statistics GetStatistics()
         {
