@@ -45,8 +45,8 @@ namespace ChallengeApp.Tests
         public void AreEmployesNotEqual()
         {
             //arrange
-            Employee a = new Employee("Adam","Jaki",44);
-            Employee b = new Employee("Adam", "Jaki", 44);
+            Employee a = new Employee("Adam","Jaki",44, 'M');
+            Employee b = new Employee("Adam", "Jaki", 44, 'M');
             //act
             //assert
             Assert.AreNotEqual(a, b);

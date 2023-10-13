@@ -8,7 +8,7 @@ namespace ChallengeApp.Tests
         public void CheckMinScore()
         {
             //arrange
-            var user = new Employee("Adam", "Taki", 45);
+            var user = new Employee("Adam", "Taki", 45,'M');
             //act
             user.AddPoints(9);
             user.AddPoints(10);
@@ -24,7 +24,7 @@ namespace ChallengeApp.Tests
         public void CheckMaxPlusScore()
         {
             //arrange
-            var user = new Employee("Adam", "Taki", 45);
+            var user = new Employee("Adam", "Taki", 45, 'M');
             //act
             user.AddPoints(9);
             user.AddPoints(10);
@@ -40,7 +40,7 @@ namespace ChallengeApp.Tests
         public void CheckAverageScore()
         {
             //arrange
-            var user = new Employee("Adam", "Taki", 45);
+            var user = new Employee("Adam", "Taki", 45, 'M');
             //act
             user.AddPoints(9);
             user.AddPoints(10);
@@ -59,7 +59,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void CheckEmptyScore()
         {
-            var emp = new Employee("Adam", "Taki", 33);
+            var emp = new Employee("Adam", "Taki", 33, 'M');
 
             var result = emp.GetStatistics();
             Assert.AreEqual(0, result.Max);
@@ -73,7 +73,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void CheckAverageLetter()
         {
-            var emp = new Employee("Adam", "Taki", 33);
+            var emp = new Employee("Adam", "Taki", 33, 'M');
             emp.AddPoints("A");
             emp.AddPoints("B");
             emp.AddPoints("C");
