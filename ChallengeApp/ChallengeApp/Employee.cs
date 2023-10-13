@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
+
         public int Age { get; set; }
 
         private List<float> points;
 
 
 
-        public Employee(string name, string surname, int age)
+        public Employee(string name, string surname, int age, char sex)
+            : base(name, surname, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
+
             this.Age = age;
             points = new List<float>();
         }
