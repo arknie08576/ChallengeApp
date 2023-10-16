@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 Console.WriteLine("Witaj w programie do oceny pracowników");
 
-var employee = new Employee("Jan", "Taki", 33, 'M');
+var employee = new EmployeeInFile("Jan", "Taki", 33, 'M');
 
 
 while (true)
