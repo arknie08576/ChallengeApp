@@ -14,7 +14,7 @@ namespace ChallengeApp
     {
 
         private const string filename = "grades.txt";
-
+        public override event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, int age, char sex)
             : base(name, surname, sex, age)
         {
@@ -28,6 +28,11 @@ namespace ChallengeApp
                 using (var writer = File.AppendText(filename))
                 {
                     writer.WriteLine(score);
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
+
                 }
             }
             else

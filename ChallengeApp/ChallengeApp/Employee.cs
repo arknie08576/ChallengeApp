@@ -8,24 +8,27 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee : Person, IEmployee
+    public class Employee : EmployeeBase
     {
 
         
         private List<float> points;
-
+        public override event GradeAddedDelegate GradeAdded;
         public Employee(string name, string surname, int age, char sex)
             : base(name, surname, sex, age)
         {
 
-            
             points = new List<float>();
         }
-        public void AddPoints(float score)
+        public override void AddPoints(float score)
         {
             if (score >= 0 && score <= 100)
             {
                 points.Add(score);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -103,7 +106,7 @@ namespace ChallengeApp
 
 
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             Statistics stats = new Statistics();
             stats.Min = float.MaxValue;
