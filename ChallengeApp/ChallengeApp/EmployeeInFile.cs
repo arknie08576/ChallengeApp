@@ -15,22 +15,19 @@ namespace ChallengeApp
 
         private const string filename = "grades.txt";
 
-
         public EmployeeInFile(string name, string surname, int age, char sex)
             : base(name, surname, sex, age)
         {
 
         }
+
         public override void AddPoints(float score)
         {
             if (score >= 0 && score <= 100)
             {
                 using (var writer = File.AppendText(filename))
                 {
-
                     writer.WriteLine(score);
-
-
                 }
             }
             else
@@ -38,14 +35,6 @@ namespace ChallengeApp
                 throw new Exception("Nieprawidłowa ocena");
             }
         }
-
-
-
-
-
-
-
-
 
         public override Statistics GetStatistics()
         {
@@ -67,12 +56,10 @@ namespace ChallengeApp
                         stats.Max = Math.Max(stats.Max, point);
                         stats.Average += point;
 
-
                         line = reader.ReadLine();
                     }
                     if (i > 0)
                     {
-
                         stats.Average /= i;
                     }
                     else
@@ -84,7 +71,6 @@ namespace ChallengeApp
                     }
                 }
             }
-
 
             switch (stats.Average)
             {

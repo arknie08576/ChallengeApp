@@ -23,15 +23,12 @@ namespace ChallengeApp
 
         public abstract void AddPoints(float score);
 
-
         public void AddPoints(string score)
         {
 
             float scoreToFloat = 0.0F;
             if (float.TryParse(score, out scoreToFloat))
             {
-
-
                 AddPoints(scoreToFloat);
             }
             else
@@ -72,18 +69,14 @@ namespace ChallengeApp
 
         public virtual void AddPoints(long score)
         {
-
             float scoreToFloat = score;
             AddPoints(scoreToFloat);
-
         }
 
         public virtual void AddPoints(double score)
         {
-
             float scoreToFloat = (float)score;
             AddPoints(scoreToFloat);
-
         }
 
         public abstract Statistics GetStatistics();
