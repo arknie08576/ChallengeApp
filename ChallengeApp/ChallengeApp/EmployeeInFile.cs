@@ -44,57 +44,23 @@ namespace ChallengeApp
         public override Statistics GetStatistics()
         {
             Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
+
             if (File.Exists(filename))
             {
                 using (var reader = File.OpenText(filename))
                 {
-                    int i = 0;
+
                     var line = reader.ReadLine();
                     while (line != null)
                     {
-                        i++;
+
                         float point = float.Parse(line);
-                        stats.Min = Math.Min(stats.Min, point);
-                        stats.Max = Math.Max(stats.Max, point);
-                        stats.Average += point;
+                        stats.AddGrade(point);
 
                         line = reader.ReadLine();
                     }
-                    if (i > 0)
-                    {
-                        stats.Average /= i;
-                    }
-                    else
-                    {
-                        stats.Min = 0;
-                        stats.Max = 0;
-                        stats.Average = 0;
-                        stats.AverageLetter = 'E';
-                    }
+
                 }
-            }
-
-            switch (stats.Average)
-            {
-
-                case var average when average >= 80:
-                    stats.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    stats.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    stats.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    stats.AverageLetter = 'D';
-                    break;
-                case var average when average >= 00:
-                    stats.AverageLetter = 'E';
-                    break;
             }
             return stats;
         }

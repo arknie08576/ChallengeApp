@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ChallengeApp.EmployeeBase;
 
 namespace ChallengeApp
 {
@@ -18,6 +19,8 @@ namespace ChallengeApp
         void AddPoints(double score);
 
         Statistics GetStatistics();
+
+        event GradeAddedDelegate GradeAdded;
     }
 
 

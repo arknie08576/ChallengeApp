@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,7 +12,7 @@ namespace ChallengeApp
     public class EmployeeInMemory : EmployeeBase
     {
 
-        
+
         private List<float> points;
         public override event GradeAddedDelegate GradeAdded;
         public EmployeeInMemory(string name, string surname, int age, char sex)
@@ -92,62 +93,20 @@ namespace ChallengeApp
                         AddPoints(20f);
                         break;
                     default:
-                        throw new Exception ("Nieprawidłowa ocena");
-                        
-
-
-
-
+                        throw new Exception("Nieprawidłowa ocena");
 
                 }
             }
         }
 
-
-
-
         public override Statistics GetStatistics()
         {
             Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
 
             foreach (var point in points)
             {
-                stats.Min = Math.Min(stats.Min, point);
-                stats.Max = Math.Max(stats.Max, point);
-                stats.Average += point;
-            }
-            stats.Average /= points.Count;
+                stats.AddGrade(point);
 
-            switch (stats.Average)
-            {
-
-                case var average when average >= 80:
-                    stats.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    stats.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    stats.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    stats.AverageLetter = 'D';
-                    break;
-                case var average when average >= 00:
-                    stats.AverageLetter = 'E';
-                    break;
-
-            }
-
-            if (points.Count == 0)
-            {
-                stats.Min = 0;
-                stats.Max = 0;
-                stats.Average = 0;
-                stats.AverageLetter = 'E';
             }
 
             return stats;

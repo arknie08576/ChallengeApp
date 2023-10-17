@@ -13,6 +13,9 @@ namespace ChallengeApp
         public int Age { get; private set; }
         public char Sex { get; private set; }
         private List<float> points;
+
+        public event EmployeeBase.GradeAddedDelegate GradeAdded;
+
         public Supervisor(string name, string surname, int age, char sex)
         {
             this.Name = name;
@@ -144,45 +147,11 @@ namespace ChallengeApp
         public Statistics GetStatistics()
         {
             Statistics stats = new Statistics();
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-            stats.Average = 0;
+
 
             foreach (var point in points)
             {
-                stats.Min = Math.Min(stats.Min, point);
-                stats.Max = Math.Max(stats.Max, point);
-                stats.Average += point;
-            }
-            stats.Average /= points.Count;
-
-            switch (stats.Average)
-            {
-
-                case var average when average >= 80:
-                    stats.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    stats.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    stats.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    stats.AverageLetter = 'D';
-                    break;
-                case var average when average >= 00:
-                    stats.AverageLetter = 'E';
-                    break;
-
-            }
-
-            if (points.Count == 0)
-            {
-                stats.Min = 0;
-                stats.Max = 0;
-                stats.Average = 0;
-                stats.AverageLetter = 'E';
+                stats.AddGrade(point);
             }
 
             return stats;
