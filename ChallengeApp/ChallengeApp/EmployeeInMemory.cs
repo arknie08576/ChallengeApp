@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee : EmployeeBase
+    public class EmployeeInMemory : EmployeeBase
     {
 
         
         private List<float> points;
         public override event GradeAddedDelegate GradeAdded;
-        public Employee(string name, string surname, int age, char sex)
+        public EmployeeInMemory(string name, string surname, int age, char sex)
             : base(name, surname, sex, age)
         {
 
