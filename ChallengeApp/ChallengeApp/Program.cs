@@ -19,7 +19,7 @@ while (true)
 
     var ocena = Console.ReadLine();
 
-    if (ocena == "q")
+    if (ocena == "e" ||ocena =="E")
     {
 
         break;
