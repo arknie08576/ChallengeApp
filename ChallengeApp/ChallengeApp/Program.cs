@@ -35,7 +35,7 @@ while (true)
 
     }
 }
-
+//bug fix
 
 Console.WriteLine(employee.Name + " " + employee.Surname + ", wiek " + employee.Age);
 Console.WriteLine("Min ocena: " + employee.GetStatistics().Min);
